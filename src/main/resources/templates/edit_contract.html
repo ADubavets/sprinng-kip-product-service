@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit contract</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-2.min.css}"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container-fluid" style="width: 850px">
+    <div class="row flex-nowrap">
+
+        <div class="col py-3 container mt-5">
+
+            <h3> Изменение информации о контракте </h3>
+            <form th:method="put" th:action="@{/edit_contract}" th:object="${contract}">
+                <div class="mb-3">
+                    <input type="text" id="id" th:field="*{id}" hidden>
+
+                    <label for="cipher" class="form-label"> Шифр контракта </label>
+                    <input type="text" class="form-control" id="cipher" th:field="*{cipher}" disabled>
+
+                    <label for="number" class="form-label"> Номер контракта </label>
+                    <input type="text" class="form-control" id="number" th:field="*{number}" disabled>
+
+                    <label for="contract_date" class="form-label"> Дата контракта </label>
+                    <input type="text" class="form-control" id="contract_date" th:field="*{contract_date}" disabled>
+
+                    <label for="firm" class="form-label"> Организация </label>
+                    <input type="text" class="form-control" id="firm" th:field="*{firm.firm}" disabled>
+
+                    <label for="term" class="form-label"> Срок выполнения работ </label>
+                    <input type="text" class="form-control" id="term" th:field="*{term}">
+
+                    <label for="calendar" class="form-label"> Исчисление срока в днях </label>
+                    <input type="text" class="form-control" id="calendar" th:field="*{calendar.name}">
+
+                    <label for="status" class="form-label"> Статус </label>
+                    <input type="text" class="form-control" id="status" th:field="*{status.name}">
+
+                    <label for="startdate" class="form-label"> Начало работ </label>
+                    <input type="date" class="form-control" id="startdate" th:field="*{startdate}">
+
+                    <label for="finishdate" class="form-label"> Окончание работ </label>
+                    <input type="date" class="form-control" id="finishdate" th:field="*{finishdate}">
+
+                    <label for="note" class="form-label"> Примечание </label>
+                    <input type="text" class="form-control" id="note" th:field="*{note}">
+
+
+                </div>
+                <button type="submit" class="btn btn-primary">Изменить </button>
+                <button class="btn btn-secondary"
+                        type="button"
+                        onclick=location.href='/sales'> Вернуться
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

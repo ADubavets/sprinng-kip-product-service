@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add employee</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-2.min.css}"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        form {
+            position: fixed;
+            left: 30%;
+            width: 40%;
+        }
+
+        label, input {
+            margin-bottom: 5px;
+        }
+
+        h3 {
+            position: fixed;
+            left: 40%;
+        }
+
+        input:invalid {
+            border: 2px dashed red;
+        }
+
+        input:invalid:required {
+            background-image: linear-gradient(to right, #ffffff, #26a9e1);
+        }
+
+        input:valid {
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <br>
+    <h3> Ввод нового сотрудника организации ... </h3>
+    <br>
+    <br>
+</header>
+<div class="container text-center">
+    <main>
+        <p th:if="${employeeError}" class="error">Контактное лицо в базе данных присутствует</p>
+        <form id="newForm"
+              method="POST"
+              th:action="@{/add_employee}"
+              th:object="${employee}"
+              class="needs-validation"
+              novalidate>
+            <div>
+                <label for="name"
+                       class="form-label text-left"> Фамилия, Имя и Отчество </label>
+                <input type="text"
+                       class="form-control"
+                       th:field="*{name}"
+                       id="name"
+                       required>
+            </div>
+            <div>
+                <label for="job"
+                       class="form-label text-left"> Должность </label>
+                <input type="text"
+                       th:field="*{job}"
+                       class="form-control"
+                       id="job"
+                       required>
+            </div>
+            <label for="firm"
+                   class="form-label text-left"> Организация - работодатель </label>
+            <select class="form-select"
+                    aria-label="Customers"
+                    id="firm" name="firm"
+                    required>
+                <option></option>
+                <!--/*@thymesVar id="customers" type="lombok"*/-->
+                <th:block th:each="customer:${customers}">
+                    <option th:utext="${customer.firm}" th:value="${customer.id}">
+                    </option>
+                </th:block>
+            </select>
+            <div>
+                <label for="telephone"
+                       class="form-label text-left">Телефон</label>
+                <input type="text" th:field="*{telephone}"
+                       class="form-control" id="telephone"
+                       required>
+            </div>
+            <div>
+                <label for="email"
+                       class="form-label text-left">Email</label>
+                <input type="email" th:field="*{email}"
+                       class="form-control" id="email"
+                       placeholder="name@example.com"
+                       required>
+            </div>
+            <button type="submit" class="btn btn-primary" disabled>Сохранить сотрудника</button>
+            <button class="btn" type="reset"> Очистить</button>
+            <button class="btn" type="button" onclick=location.href='/employees'> Вернуться </button>
+        </form>
+    </main>
+</div>
+
+</body>
+<script th:src="@{/js/button_disable.js}"></script>
+</html>

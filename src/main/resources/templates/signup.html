@@ -1,0 +1,109 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign up page</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        form {
+            position: fixed;
+            left: 30%;
+            width: 40%;
+        }
+        label, input {
+            margin-bottom: 1rem;
+        }
+        h3 {
+            position: fixed;
+            left: 40%;
+        }
+    </style>
+</head>
+<body>
+<div class="container text-center">
+    <header>
+        <br>
+        <img class="img-responsive center-block" style="width: 64px;height: 64px"
+             alt="1"
+             th:src="@{/image/registration-icon.png}"/>
+        <br>
+    </header>
+    <main class="form-signup">
+        <form th:action="@{/signup}"
+              method="post"
+              th:object="${user}"
+              class="needs-validation text-left" novalidate>
+                <span>
+
+                    <div class="form-floating has-asterisk">
+
+                        <label for="username">Username</label>
+                        <input type="text" th:field="*{username}"
+                               class="form-control" id="username"
+                               placeholder="Username"
+                               pattern="[0-9a-zA-Z]{3,20}"
+                               title="Wrong username">
+                    </div>
+                    <div class="form-floating has-asterisk">
+
+                        <label for="email">Email</label>
+                        <input type="email" th:field="*{email}"
+                               class="form-control" id="email"
+                               placeholder="name@example.com">
+
+                    </div>
+                    <div class="form-floating has-asterisk">
+
+                        <label for="firstName">First name</label>
+                        <input type="text" th:field="*{firstName}"
+                               class="form-control" id="firstName"
+                               placeholder="firstName"
+                               pattern="[a-zA-Z]{2,20}"
+                               title="Wrong first name">
+
+                    </div>
+                    <div class="form-floating has-asterisk">
+
+                        <label for="lastName">Last name</label>
+                        <input type="text" th:field="*{lastName}"
+                               class="form-control" id="lastName"
+                               placeholder="lastName" pattern="[a-zA-Z]{2,20}"
+                               title="Wrong last name">
+
+                    </div>
+                    <div class="form-floating has-asterisk">
+
+                        <label for="password">Password</label>
+                        <input type="password" th:field="*{password}"
+                               class="form-control" id="password"
+                               placeholder="Password">
+
+                    </div>
+                    <div class="form-floating has-asterisk">
+
+                        <label for="password2">Re-enter password</label>
+                        <input type="password"
+                               class="form-control"
+                               id="password2"
+                               name="password2"
+                               value=""
+                               placeholder="Re-enter password">
+
+                    </div>
+                    <button id="submit" class="btn btn-lg btn-primary"
+                            type="submit"> Регистрация </button>
+                    <button id="reset"
+                            class="btn btn-secondary"
+                            type="reset"> Сброс </button>
+                    <button class="btn" type="button" onclick=location.href='/users'> Вернуться </button>
+                </span>
+        </form>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>KIP Service</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div id="wrapper">
+    <div class="overlay"></div>
+
+    <!-- Sidebar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+        <ul class="nav sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    МЕНЮ
+                </a>
+            </li>
+            <li>
+                <a th:href="@{/sales}">ПРОДАЖИ</a>
+            </li>
+            <li>
+                <a href="#">ПРОИЗВОДСТВО</a>
+            </li>
+            <li>
+                <a href="#">СПРАВОЧНИКИ</a>
+            </li>
+            <li>
+                <a th:href="@{/users}">АДМИНИСТРИРОВАНИЕ</a>
+            </li>
+            <li>
+                <a href="#">КОНТАКТЫ</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1 class="striped-shadow">КИП ОБОРУДОВАНИЕ И ИЗМЕРИТЕЛЬНЫЕ СИСТЕМЫ</h1>
+                    <img class="img-responsive center-block"
+                         alt="1"
+                         th:src="@{/image/kip.png}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+</body>
+<script th:src="@{/js/menu.js}"></script>
+</html>

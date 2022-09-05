@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit customer</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-2.min.css}"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container-fluid" style="width: 850px">
+    <div class="row flex-nowrap">
+
+        <div class="col py-3 container mt-5">
+
+            <h3> Изменение информации об организации </h3>
+            <!--/*@thymesVar id="customer" type="lombok"*/-->
+            <form th:method="put" th:action="@{/edit_customer}" th:object="${customer}">
+                <div class="mb-3">
+                    <input type="text" id="id" th:field="*{id}" hidden>
+
+                    <label for="firm" class="form-label"> Наименование </label>
+                    <input type="text" class="form-control" id="firm" th:field="*{firm}" disabled>
+
+                    <label for="address" class="form-label">Адрес</label>
+                    <input type="text" class="form-control" id="address" th:field="*{address}" disabled>
+
+                    <label for="leaderManager" class="form-label"> Руководитель </label>
+                    <input type="text" class="form-control" id="leaderManager" th:field="*{leaderManager}">
+
+                    <label for="telephone" class="form-label"> Телефон </label>
+                    <input type="text" class="form-control" id="telephone" th:field="*{telephone}">
+
+                    <label for="email" class="form-label"> E-mail </label>
+                    <input type="text" class="form-control" id="email" th:field="*{email}">
+
+                </div>
+                <button type="submit" class="btn btn-primary">Изменить </button>
+                <button class="btn btn-secondary"
+                        type="button"
+                        onclick=location.href='/customers'> Вернуться </button>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

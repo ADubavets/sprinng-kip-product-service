@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add contract</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap-2.min.css}"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        form {
+            position: fixed;
+            left: 25%;
+            width: 50%;
+        }
+
+        label, input {
+            margin-bottom: 5px;
+        }
+
+        h3 {
+            position: fixed;
+            left: 40%;
+        }
+
+        input:invalid {
+            border: 2px dashed red;
+        }
+
+        input:invalid:required {
+            background-image: linear-gradient(to right, #ffffff, #26a9e1);
+        }
+
+        input:valid {
+            border: 2px solid black;
+        }
+
+
+    </style>
+</head>
+<body>
+<header>
+    <br>
+    <h3> Ввод нового контракта </h3>
+    <br>
+    <br>
+</header>
+<div class="container text-center">
+    <main>
+
+        <form id="newForm"
+              method="POST"
+              th:action="@{/save_contract}"
+              th:object="${contract}"
+              novalidate>
+            <div class="mb-3">
+
+                <label for="cipher"
+                       class="form-label text-left"> Шифр договора </label>
+                <input type="text"
+                       class="form-control"
+                       id="cipher"
+                       th:field="*{cipher}"
+                       required>
+
+                <label for="contractNumber"
+                       class="form-label text-left"> Номер договора </label>
+                <input type="text"
+                       class="form-control"
+                       id="contractNumber"
+                       th:field="*{number}"
+                       required>
+                <p th:if="${#fields.hasErrors('number')}">Invalid number</p>
+                <label for="contractDate"
+                       class="form-label text-left"> Дата договора </label>
+                <input type="date"
+                       class="form-control"
+                       id="contractDate"
+                       th:field="*{contract_date}"
+                       required>
+
+                <label for="status"
+                       class="form-label text-left"> Статус контракта </label>
+                <select class="form-select"
+                        aria-label="status"
+                        id="status" name="status"
+                        required>
+                    <option></option>
+                    <!--/*@thymesVar id="customers" type="lombok"*/-->
+                    <th:block th:each="status:${status}">
+                        <option th:utext="${status.name}" th:value="${status.id}">
+                        </option>
+                    </th:block>
+                </select>
+                <!--th:block th:each="status:${status}">
+                    <div class="form-check m-3 form-check-inline">
+                            <input type="radio" style="display: inline; margin-right: 1px;"
+                                   th:field="*{name}"
+                                   th:value="*{id}"
+                                   class="custom-control-input">
+                            <label class="custom-control-label"
+                                   th:for="${#lists.contains(contract.status,stat)}"
+                                   th:text="${status.getName()}">status</label>
+                    </div>
+                </th:block-->
+
+                <label for="firm"
+                       class="form-label text-left"> Организация - заказчик </label>
+                <select class="form-select"
+                        aria-label="Customers"
+                        id="firm" name="firm"
+                        required>
+                    <option></option>
+                    <!--/*@thymesVar id="customers" type="lombok"*/-->
+                    <th:block th:each="customer:${customers}">
+                        <option th:utext="${customer.firm}" th:value="${customer.id}">
+                        </option>
+                    </th:block>
+                </select>
+
+                <!--label for="note"
+                       class="form-label text-left"> Особые примечания к контракту </label>
+                <input type="text"
+                       class="form-control" id="note" th:field="*{note}"
+                       required-->
+
+                <label for="term"
+                       class="form-label "> Срок действия контракта </label>
+                <input type="text"
+                       class="form-control" id="term"
+                       th:field="*{term}"
+                       required>
+
+                <label for="calendar"
+                       class="form-check-label">Исчисление контракта: </label>
+                <select class="form-select"
+                        aria-label="calendar"
+                        id="calendar"
+                        name="calendar"
+                        required>
+                    <option></option>
+                    <!--/*@thymesVar id="customers" type="lombok"*/-->
+                    <th:block th:each="calendar:${calendar}">
+                        <option th:utext="${calendar.name}" th:value="${calendar.id}">
+                        </option>
+                    </th:block>
+                </select>
+            </div>
+            <button type="submit"
+                    id="send"
+                    class="btn btn-primary" disabled> Сохранить контракт </button>
+            <button class="btn"
+                    type="reset"> Очистить </button>
+            <button class="btn"
+                    type="button"
+                    onclick=location.href='/sales'> Вернуться </button>
+        </form>
+    </main>
+    <footer>
+
+    </footer>
+</div>
+
+</body>
+<script th:src="@{/js/button_disable.js}"></script>
+</html>
