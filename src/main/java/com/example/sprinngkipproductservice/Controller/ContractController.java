@@ -5,13 +5,10 @@ import com.example.sprinngkipproductservice.Service.CalendarService;
 import com.example.sprinngkipproductservice.Service.ContractService;
 import com.example.sprinngkipproductservice.Service.CustomerService;
 import com.example.sprinngkipproductservice.Service.StatusService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,12 +16,11 @@ import java.util.Optional;
 
 @Controller
 public class ContractController {
-    private final ContractService contractService;
+    public final ContractService contractService;
     private final CalendarService calendarService;
     private final CustomerService customerService;
     private final StatusService statusService;
 
-    @Autowired
     public ContractController(ContractService contractService,
                               CalendarService calendarService,
                               StatusService statusService,
@@ -63,29 +59,6 @@ public class ContractController {
     public String addContractError(Model model) {
         model.addAttribute("contractError",true);
         return "add_contract";
-    }
-
-    // Сохранение нового контракта
-    @PostMapping(value="/save_contract")
-    public String saveContract(Contract contract,
-                               BindingResult result,
-                               HttpServletResponse response) {
-        System.out.println(contract);
-
-        if (result.hasErrors()) {return "redirect:/add_contract-error";}
-
-        if (contractService.getByContractNumber(contract.getNumber()) != null) {
-
-            return "redirect:/add_contract-error";}
-        else {
-            //Передать id в заголовке ответа
-            Contract newContract = contractService.save(contract);
-            long id = newContract.getId();
-            System.out.println("Запрос id" + id);
-            response.addHeader("id", String.valueOf(id));
-            System.out.println("Запрос id" + id);
-            return "redirect:/sales";
-        }
     }
 
     @GetMapping(value = "/delete_cotract")

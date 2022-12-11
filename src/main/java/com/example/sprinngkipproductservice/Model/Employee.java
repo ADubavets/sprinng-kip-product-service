@@ -13,7 +13,6 @@ import java.util.Objects;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Table(name = "employee")
 public class Employee {
 
