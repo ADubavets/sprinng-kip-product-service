@@ -12,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -68,7 +67,7 @@ public class ContractController {
 
     // Сохранение нового контракта
     @PostMapping(value="/save_contract")
-    public String saveContract(@Valid Contract contract,
+    public String saveContract(Contract contract,
                                BindingResult result,
                                HttpServletResponse response) {
         System.out.println(contract);

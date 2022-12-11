@@ -9,10 +9,10 @@ DROP TABLE if exists contracts;
 DROP TABLE if exists customers;
 DROP TABLE if exists warehouse;
 
-CREATE TABLE role(id SERIAL PRIMARY KEY NOT NULL,
+CREATE TABLE role(id INT PRIMARY KEY AUTO_INCREMENT,
                   name TEXT NOT NULL);
 
-CREATE TABLE users(id SERIAL PRIMARY KEY NOT NULL,
+CREATE TABLE users(id INT PRIMARY KEY AUTO_INCREMENT,
                    username TEXT NOT NULL,
                    password TEXT NOT NULL,
                    email TEXT NOT NULL,
@@ -23,17 +23,17 @@ CREATE TABLE users(id SERIAL PRIMARY KEY NOT NULL,
 CREATE TABLE users_roles(user_id integer NOT NULL,
                          role_id integer NOT NULL);
 
-CREATE TABLE phones(id SERIAL PRIMARY KEY NOT NULL,
+CREATE TABLE phones(id INT PRIMARY KEY AUTO_INCREMENT,
                     phone TEXT NOT NULL);
 
-CREATE TABLE customers(id SERIAL PRIMARY KEY NOT NULL,
+CREATE TABLE customers(id INT PRIMARY KEY AUTO_INCREMENT,
                        firm TEXT NOT NULL,
                        address TEXT NOT NULL,
                        email TEXT,
                        telephone TEXT,
                        leaderManager TEXT);
 
-CREATE TABLE contracts(id SERIAL PRIMARY KEY NOT NULL,
+CREATE TABLE contracts(id INT PRIMARY KEY AUTO_INCREMENT,
                        number TEXT NOT NULL,
                        contract_date DATE NOT NULL,
                        cipher TEXT NOT NULL,
@@ -45,13 +45,13 @@ CREATE TABLE contracts(id SERIAL PRIMARY KEY NOT NULL,
                        finishDate DATE,
                        note TEXT);
 
-CREATE TABLE calendar(id SERIAL PRIMARY KEY NOT NULL,
+CREATE TABLE calendar(id INT PRIMARY KEY AUTO_INCREMENT,
                       name TEXT NOT NULL);
 
-CREATE TABLE status(id SERIAL PRIMARY KEY NOT NULL,
+CREATE TABLE status(id INT PRIMARY KEY AUTO_INCREMENT,
                       name TEXT NOT NULL);
 
-CREATE TABLE employee(id SERIAL PRIMARY KEY NOT NULL,
+CREATE TABLE employee(id INT PRIMARY KEY AUTO_INCREMENT,
                    name TEXT NOT NULL,
                    job TEXT NOT NULL,
                    telephone TEXT NOT NULL,
