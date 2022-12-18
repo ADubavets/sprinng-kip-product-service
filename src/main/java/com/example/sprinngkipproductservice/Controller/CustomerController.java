@@ -40,7 +40,7 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/add_customer-error")
-    public String add_customerError(Model model) {
+    public String addCustomerError(Model model) {
         model.addAttribute("customerError", true);
         model.addAttribute("customer", badCustomer);
         return "add_customer";
@@ -48,7 +48,6 @@ public class CustomerController {
 
     @PostMapping(value = "/add_customer")
     public String saveCustomer(Customer customer, HttpServletResponse response) {
-        System.out.println(customer);
         if (customerService.getCustomerByFirm(customer.getFirm()) != null) {
             badCustomer = customer;
             return "redirect:/add_customer-error";
@@ -62,26 +61,6 @@ public class CustomerController {
             return "customers";
         }
     }
-    /*
-    @PostMapping("/libraries")
-    private long saveLibrary(@RequestBody Map<String, Object> payload) {
-    Library library = new Library();
-    library.setName(payload.get("name").toString());
-
-    @SuppressWarnings("unchecked")
-    List<Map<String, Object>> books = (List<Map<String, Object>>) payload.get("books");
-    for (Map<String, Object> bookObj : books) {
-        Book book = new Book();
-        book.setTitle(bookObj.get("title").toString());
-        book.setIsbn(bookObj.get("isbn").toString());
-        library.addBook(book);
-    }
-
-    libraryService.saveOrUpdate(library);
-
-    return library.getId();
-}
-    */
 
     @GetMapping(value = "/delete_customer")
     public String deleteCustomer(@RequestParam(name = "id") Long id) {

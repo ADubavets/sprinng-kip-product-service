@@ -12,14 +12,14 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <style>
 
-        thead th:nth-child(1) {width: 5%;text-align: center;}
-        thead th:nth-child(2) {width: 15%;text-align: center;}
-        thead th:nth-child(3) {width: 15%;text-align: center;}
-        thead th:nth-child(4) {width: 15%;text-align: center;}
-        thead th:nth-child(5) {width: 20%;text-align: center;}
-        thead th:nth-child(6) {width: 10%;text-align: center;}
-        thead th:nth-child(7) {width: 5%;text-align: center;}
-        thead th:nth-child(8) {width: 5%;text-align: center;}
+        thead th:nth-child(1) {inline-size: 5%;text-align: center;}
+        thead th:nth-child(2) {inline-size: 15%;text-align: center;}
+        thead th:nth-child(3) {inline-size: 15%;text-align: center;}
+        thead th:nth-child(4) {inline-size: 15%;text-align: center;}
+        thead th:nth-child(5) {inline-size: 20%;text-align: center;}
+        thead th:nth-child(6) {inline-size: 10%;text-align: center;}
+        thead th:nth-child(7) {inline-size: 5%;text-align: center;}
+        thead th:nth-child(8) {inline-size: 5%;text-align: center;}
 
     </style>
 </head>
@@ -57,8 +57,8 @@
         </button>
         <div class="container" >
             <header>
-                <div style="width: 64px;
-                            height: 64px;
+                <div style="inline-size: 64px;
+                            block-size: 64px;
                             display: flex;
                             align-items: center;
                             vertical-align: middle;
@@ -88,14 +88,13 @@
                                     <th> Действия </th>
                                     <th>
                                         <a th:href="@{/add_customer}">
-                                            <img th:src="@{/image/commission.png}" style="width: 32px; height: 32px"/>
+                                            <img th:src="@{/image/commission.png}" style="inline-size: 32px; block-size: 32px"/>
                                         </a>
                                     </th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                            <!--/*@thymesVar id="users" type="users"*/-->
                             <tr th:each="customer, iStat:${customers}">
                                 <td th:utext="${iStat.index+1}"></td>
                                 <td th:utext="${customer.getFirm()}"></td>
