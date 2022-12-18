@@ -11,17 +11,17 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <style>
-        thead th:nth-child(1) {width: 2%;text-align: center;}
-        thead th:nth-child(2) {width: 5%;text-align: center;}
-        thead th:nth-child(3) {width: 7%;text-align: center;}
-        thead th:nth-child(4) {width: 5%;text-align: center;}
-        thead th:nth-child(5) {width: 21%;text-align: center;}
-        thead th:nth-child(6) {width: 5%;text-align: center;}
-        thead th:nth-child(7) {width: 13%;text-align: center;}
-        thead th:nth-child(8) {width: 10%;text-align: center;}
-        thead th:nth-child(9) {width: 15%;text-align: center;}
-        thead th:nth-child(10) {width: 10%;text-align: center;}
-        thead th:nth-child(11) {width: 7%;text-align: center;}
+        thead th:nth-child(1) {inline-size: 2%;text-align: center;}
+        thead th:nth-child(2) {inline-size: 5%;text-align: center;}
+        thead th:nth-child(3) {inline-size: 7%;text-align: center;}
+        thead th:nth-child(4) {inline-size: 5%;text-align: center;}
+        thead th:nth-child(5) {inline-size: 21%;text-align: center;}
+        thead th:nth-child(6) {inline-size: 5%;text-align: center;}
+        thead th:nth-child(7) {inline-size: 13%;text-align: center;}
+        thead th:nth-child(8) {inline-size: 10%;text-align: center;}
+        thead th:nth-child(9) {inline-size: 15%;text-align: center;}
+        thead th:nth-child(10) {inline-size: 10%;text-align: center;}
+        thead th:nth-child(11) {inline-size: 7%;text-align: center;}
     </style>
 </head>
 <body>
@@ -58,8 +58,8 @@
         </button>
         <div class="container">
             <header>
-                <div style="width: 32px;
-                            height: 32px;
+                <div style="inline-size: 32px;
+                            block-size: 32px;
                             display: flex;
                             align-items: center;
                             vertical-align: middle;
@@ -98,7 +98,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <!--/*@thymesVar id="users" type="users"*/-->
                             <tr th:each="contract, iStat:${contracts}">
                                 <td th:utext="${iStat.index+1}"></td>
                                 <td th:utext="${contract.cipher}"></td>
@@ -168,10 +167,10 @@
                 <h4> Фильтрация по статусу: </h4>
 
                 <form style="
-                            width: 750px;
+                            inline-size: 750px;
                             margin: auto;
-                            padding-left:30px;
-                            padding-right: 30px;
+                            padding-inline-start:30px;
+                            padding-inline-end: 30px;
                             display: flex;
                             justify-content: space-between;
                             align-items: center;">
