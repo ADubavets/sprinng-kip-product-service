@@ -33,8 +33,7 @@ public class ContractService {
     }
 
     public int countContract(){
-        int i = (int) contractRepository.count();
-        return i;
+        return (int) contractRepository.count();
     }
 
     public Contract getByContractNumber(String contractNumber) {
